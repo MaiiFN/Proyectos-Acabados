@@ -1,0 +1,153 @@
+#include <iostream>
+using namespace std; 
+
+//CARLOS ISMAEL GRES H.
+
+//FUNCIONES
+
+//Actividad
+/*Hacer 4 funciones con el mismo nombre y cada una de ellas saque el
+area de diferentes figuras geometricas: "Rectangulo, triangulo, circulo y trapecio
+e imprimir las 4 funciones en consola. "*/
+
+
+//Para sacar el area de una figura geometrica es multiplicar base * altura
+
+
+//LISTO ----- OK! RECTANGULO
+int area(int b, int a ){ /*Rectangulo*/ 
+//Para calcular el area de un rectangulo, ocupamos saber su base * altura
+
+	int formula = (b * a);
+
+	return formula;
+}
+
+//LISTO ----- OK! TRIANGULO
+int area(int a, int b, int c) {/*Triangulo*/
+	int resultado = (b * a) / c;  
+
+	return resultado;
+}
+
+//LISTO ------ OK! TRAPECIO
+int area(int a, int b, int m, int h) {/*Trapecio*/ 
+
+//Formula : (Base Mayor + Base menor / 2 ) * altura
+//b = base mayor, m = base menor, a = altura;
+//h=2, use h como 2 para usar la sobrecarga de 4 variables y no se cunfundieran con la de 3 el programa
+	int resultado = (m+b) / h  *  a;
+
+	return resultado;
+}
+
+//LISTO -------- OK!  CIRCULO
+double  area( double r) {
+	/*Circulo*/ 
+	double resultado = 3.1416 * (r*r);
+
+	return resultado;
+}
+
+//---------------------------------------------------------------
+
+void palabra( char n ){
+	cout << "Palabra completa: "<< n;
+
+}
+ 
+
+
+int main() {
+
+	//int formulaDOS;
+	//formulaDOS = (5 + 10) / 2  * 12;
+	//cout << formulaDOS;
+	//cout << endl<<endl;
+
+//Rectangulo
+	int a, b;
+	cout << "Calcular el area de un rectangulo \n";
+	cout << "Formula: Base x Altura" << endl;
+	cout << "\nIngrese la base: "; cin >> b;
+	if (b <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una base de: " << b<<" m. "<<endl;
+	cout << "\nIngrese la altura: "; cin >> a;
+	if (a <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una altura de: "<< a<< " m. " << endl;
+     
+	cout << endl;
+	cout <<"Area: "<< area(a , b)<<" m^2";
+
+	//----------------------------------------------------------
+ 
+	//Triangulo
+	int c=2;
+
+	cout << "\n\n------------------------------------------------------" << endl;
+	cout << "\nCalcular el area de un triangulo \n";
+	cout << "Formula: Base x Altura / 2" << endl;
+	cout << "\nIngrese la base: "; cin >> b;
+	if (b <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una base de: " << b << " m. " << endl;
+	cout << "\nIngrese la altura: "; cin >> a;
+	if (a <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una altura de: " << a << " m. " << endl;
+
+	cout << endl;
+	cout << "Area: " << area(a, b, c) << " m^2";
+
+
+	cout << "\n\n------------------------------------------------------" << endl;
+	//----------------------------------------------------------------------------
+
+	//Circulo
+	double r;
+	double pi = 3.1416;
+	cout << "\nCalcular el area de un Circulo \n";
+	cout << "Formula: Pi x r^2 " << endl;
+	cout << endl;
+	cout << "El valor de PI es: " << pi<<endl;
+	cout << "Ingrese el valor de r en m: "; cin >> r;
+	if (r <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << endl;
+	cout << "Area: " << area(r) << " m^2";
+
+	cout << "\n\n------------------------------------------------------" << endl;
+
+	//-------------------------------------------------------------------------------
+
+	//Trapecio 
+	int m;
+	int h = 2;
+	cout << "\n\n------------------------------------------------------" << endl;
+	cout << "\nCalcular el area de un Trapecio \n";
+	cout << "Formula: (Base Menor + base Mayor) / 2  *  altura" << endl;
+
+
+	cout << "\nIngrese la base menor: "; cin >> m;
+	if (m <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una base menor de: " << m << " m. " << endl;
+
+	cout << "\nIngrese la base mayor: "; cin >> b;
+	if (b <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una base de: " << b << " m. " << endl;
+
+	cout << "\nIngrese la altura: "; cin >> a;
+	if (a <= 0) { cout << "No puede ingresar valores inferiores a 0 \n"; }
+	cout << "Una altura de :" << a << " m" << endl;
+	cout << endl;
+
+	cout << "Area: " << area(a, b, m, h) << " m^2";
+
+
+	cout << "\n\n------------------------------------------------------" << endl;
+	cout << "FINAL"<<endl;
+
+	cout << "\n\n------------------------------------------------------" << endl;
+
+
+
+	return 0; 
+}
+

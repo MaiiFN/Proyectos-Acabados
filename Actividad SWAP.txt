@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+
+
+//CARLOS ISMAEL GRES HERMOSILLO
+//ING PROGRAMACION VIDEOJUEGOS. 
+//ACTIVIDAD SWAP
+
+
+
+
+//Es void porque no quiero que me regrese un numero, quiero que me imprima un valor
+void swap(int& a, int& b) {
+
+	//Asignamos el apuntador 
+	int* apuntador;
+	apuntador = new int(); //Reservamos posicion en memoria
+
+	int cambioA = b;
+	int cambioB = a;
+
+	cout << "A es: " << cambioA << "\nB es: " << cambioB << endl;
+
+	delete apuntador;
+}
+
+
+int main() {
+
+	//int a;
+	//cout << "Ingrese el valor de A: "; cin >> a; //Ingresamos el valor de a
+	//cout << endl;
+	//int b;
+	//cout << "Ingrese el valor de B: "; cin >> b;//Ingresamos el valor de b
+	//cout << endl;
+
+	//swap(a, b); //Cambia los valores
+
+//------------
+
+	//Pedir el valor de A y B
+
+	int* prueba;
+	prueba = new int();
+
+	int a, b;
+	cout << "Ingrese el valor de A: "; cin >> a;
+	cout << "Ingrese el valor de B: "; cin >> b;
+
+	prueba = &a;
+	*prueba = a;
+
+	cout << "\n\nA: " << a << endl;
+	/*cout << "&A: " << &a << endl;*/
+	//cout << "Apuntador prueba :" << prueba << endl;
+	//----------------------------------------------------------
+
+	prueba = &b;
+	*prueba = b;
+	cout << "B: " << b << endl;
+
+	//DESPUES INVOCAMOS A LA FUNCION SWAP PARA QUE APAREZCA EL CAMBIO
+
+	cout << "\nAPLICAMOS EL SWAP\n" << endl;
+	swap(a, b);
+	cout << endl;
+	cout << "FIN";
+
+
+
+
+	//delete prueba; //Liberamos el espacio de un apuntador PERO DA ERROR, POR ESO LO QUITE D:
+	return 0;
+}

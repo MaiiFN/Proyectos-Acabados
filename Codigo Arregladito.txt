@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+
+
+//CARLOS ISMAEL GRES HERMOSILLO
+//IPV
+
+
+//Imprimir arreglo
+//LISTO ------ OK!
+void mostrararreglo(int* arreglo, int _size)
+{
+
+	if (_size == 0) {
+		cout << "Arreglo vacio. \n" << endl;
+	}//FINAL DEL IF
+	else
+	{
+		cout << "{";
+		for (int i = 0; i < _size; ++i) //en vez de ++i, originalmente estaba en i--
+		{
+			
+			cout << arreglo[i] << " ";
+		} //FINAL DEL FOR
+
+		cout << "}" << endl;
+	}//FINAL DEL ELSE
+}
+
+//----------------------------------------------------------------
+
+
+//Funcion que redimensiona y lo regresa
+int* redimensionarreglo(int* arreglo, int oldsize, int newsize)
+{
+	int* nuevoarreglo = new int [newsize]; //Definimos un nuevo arreglo
+		if (newsize > oldsize) //El nuevo tamaño es mas grande
+	{
+			for (int i = 0; i < oldsize; i++) {
+				nuevoarreglo[i] = arreglo[i];
+			}
+	} //Final del if
+
+		else ///El nuevo tamaño es mas pequeño, solo conservamos hasta donde se necesite
+		{
+			for (int i = 0; i < newsize; i++)
+				nuevoarreglo[i] = arreglo[i];
+
+		}//Final del else
+	delete[] arreglo; ///Borramos el espacio viejo que se usaba
+		return nuevoarreglo; //Retornamos el nuevo arreglo, ya que es la variable comun entre todas las funciones
+
+}
+
+
+
+int main()
+{
+
+	int* arreglo = NULL; //Esto esta en NADA = NULL
+	int arreglosize = 0; //Nuestro tamano es 0
+	bool salir = false; //Para salir esta en falso, por ahora
+
+	while (!salir) // salir==false
+	{
+		mostrararreglo(arreglo, arreglosize);
+		cout << "1)Meter un elemento \n2)Cambiar el tamano del arreglo \n3)Salir \n"<<endl;
+		int opcion = 0;
+		cout << "Eliga una opcion: ";
+		cin >> opcion; //La opcion donde se va elegir el switch, si es 1 , 2 o 3
+
+		switch (opcion)
+		{
+		case 1: //Opcion 1
+		{
+			cout << "Ingrese un elemento en el indice deseado: = ";
+			int idx; //Declaramos idx
+			cin >> idx; ///Obtenemos que elemento cambiaremos posicion
+			if (idx < 0 || idx >= arreglosize) ///validamos que sea un espacio valido
+			{
+				cout << "\nindice no valido" << endl;
+			}
+			else
+			{
+				cout <<"Valor " << idx<<" :";
+				int valor;
+				cin >> valor; ///Obtenemos valor
+				arreglo[idx] = valor;
+			}
+
+			break;
+		}
+
+		case 2: ///Cambiar tamaño de arreglo
+		{
+			cout << "Nueva dimension del arreglo = ";
+			int newsize = 0;// Inicializamos el nuevo tamano
+			cin >> newsize; ///Obtenemos nuevo tamaño
+			cout << endl;
+			arreglo = redimensionarreglo(arreglo, arreglosize, newsize); ///Llamamos funcion para redimensionar
+			arreglosize = newsize;
+		}
+		break;
+
+		default: ///3 u otro, nos salimos del ciclo
+		{
+			salir = true;
+			break;
+		}
+		delete[] arreglo; ///Borramos la memoria a donde apuntamos
+		arreglo = NULL;
+
+		
+		}//Final del SWITCH
+
+	}//Final del while
+
+	return 0;
+} //Final del MAIN

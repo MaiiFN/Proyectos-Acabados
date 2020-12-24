@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+//CARLOS ISMAEL GRES HERMOSILLO
+//IPV  19/11/20
+
+int cuadrado(int* a ){
+
+	int valor;
+	cout << "Ingrese un valor: "; cin >> valor;
+	int* almacen = new int(valor);
+
+	cout << *almacen << endl;
+
+	cout << "-----------------------------------------" << endl;
+	cout << "Su numero elevado al cuadrado es: ";
+	int igual = *almacen;
+	int formula = (*almacen * igual);
+	cout << formula << endl;
+
+	return formula;
+}
+
+
+int main() {
+
+	int a;
+	cuadrado(&a);
+
+//----------------
+	return 0;
+}

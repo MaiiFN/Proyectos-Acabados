@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+//CARLOS ISMAEL GRES H.
+
+//Tarea: 
+//Hacer 3 funciones donde pueda ingresar una palabra char[] y hagan lo
+//siguiente (imprimir las 3 funciones en la consola).
+
+/*Imprimir toda la palabra
+   Imprimir solo las vocales,
+   Imprimir solo las consonantes. */
+
+
+//LISTO ----- OK! COMPLETO
+void palabra(char n[15]){
+	cout << "El nombre que ha escrito es: " << n;
+
+}
+
+//LISTO ------ OK! VOCALES
+void palabraV(char n[15]){
+
+	for (int i = 0; i < 15; i++) {
+		if (n[i] == 'a' || n[i] == 'e' || n[i] == 'i' || n[i] == 'o' || n[i] == 'u') { cout << n[i]; }
+		
+	}//Final del for
+}
+
+
+// LISTO OK! CONSONANTES
+void palabraC(char n[15]) {
+	for (int i = 0; i < 15; i++) {
+		if (n[i] != 'a' && n[i] != 'e' && n[i] != 'i' && n[i] != 'o' && n[i] != 'u') { cout << n[i]; }
+	}
+}
+
+int main() {
+	//Imprimir hola
+	char n[15]; //Ingresamos la cantidad de caracteres que se va a poner
+	//porque le vamos a pedir al usuario que ingrese una palabra.
+	cout << "Ingrese una palabra sin espacios: "; cin >> n;//pedimos que ingrese la palabra
+
+	cout << endl << endl;
+	palabra(n); //llamamos a nuestro void que va imprimir nuestra palabra
+	//----------------------------------------------------------------
+	cout << endl << endl;
+	//Imprimir vocales
+	cout << "Solo vocales: ";
+	palabraV(n);
+	cout << endl << endl;
+
+	//Imprimir Consonantes
+	cout << "Solo Consonantes: ";
+	palabraC(n);
+	cout << endl << endl;
+
+}

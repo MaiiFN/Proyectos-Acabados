@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+//CARLOS ISMAEL GRES HERMOSILLO
+//IPV ACTIVIDAD DE LOS STRINGS
+
+int main() {
+
+    //Creamos un arreglo solo para guardar los valores en posiciones y acceder mas facil a ellos
+	string animalesPosition[] = { " Perro", " Gato", " Conejo", " Rata", " Tiburon", " Delfin" }; 
+   
+	//Creamos la variable que solo va imprimir todo
+	for (int i = 0; i <= 5; ++i) {
+		cout << animalesPosition[i];
+		cout << endl;
+	}
+
+	//Preguntamos cual animal desea eliminar 
+	cout << "\nElimine algun animal de la lista " << endl;
+	int a; //El valor de la posicion
+	cout << "Cual posicion deseas borrar? "; cin >> a;
+	cout << endl;
+
+
+	cout << animalesPosition[a]; cout << endl; //Imprime el valor del animal que deseamos borrar
+
+	//Eliminamos el valor seleccionado
+	for (int i = a; i < 5; i++) {
+		animalesPosition[i] = animalesPosition[i + 1];
+}
+
+	//Imprimos otra vez la lista 
+	cout << "\nLista actualizada: " << endl;
+
+	for (int i = 0; i < 5; ++i) {
+		cout << animalesPosition[i];
+		cout << endl;
+	}
+//------------------------------------------------------------------
+
+//Pedir al usuario un nuevo animal
+string nuevoANIMAL;
+cout << "\nIngrese un nuevo animal: "; cin >> nuevoANIMAL;//Variable de nuevo anima
+
+//Verificamos si existe si coincide con algun animal de la lista
+for (int i = 0; i < 5; ++i) {
+
+	int index = animalesPosition[i].find(nuevoANIMAL);
+	if (nuevoANIMAL == "Perro" || nuevoANIMAL == "Gato" || nuevoANIMAL ==  "Conejo" || nuevoANIMAL == "Rata" || nuevoANIMAL =="Tiburon" ||nuevoANIMAL == "Delfin")
+	{
+		cout << "\nNo puedes ingresar un animal que ya esta en la lista. "<<endl;
+		break;
+     }   
+	else { cout << "El animal que ha ingresado es: " << nuevoANIMAL<<endl;
+	string animales = "\nPerro, Gato, Conejo, Rata, Tiburon, Delfin, ";
+	animales.append(nuevoANIMAL);
+	cout <<"\nImpresion final: " << animales;
+
+	break; }
+}//Final de for
+
+//-------------------------------------------------------------------
+	/* 
+	TAREA 25/11 1:30PM
+
+	String texto = "Perro, Gato, Conejo, Rata, Tiburon, Delfin";
+
+	-Imprimir en la pantalla el texto
+	-Preguntar al usuario que animal desea borrar(validar que el animal exista)
+	-Borrar dicho animal y reimprimir el texto
+	-Pedir al usuario ingresar un nuevo animal
+	-Agregar el animal al final del texto, osea el animal nuevo, en el final
+	 validar que no se repita el nombre del animal
+	-Reimprimir y SALIR. */
+
+}

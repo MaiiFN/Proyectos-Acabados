@@ -1,0 +1,361 @@
+// PROGRAMACION 02 DIC.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
+
+#include <iostream>
+#include<stdlib.h>
+#include<time.h>
+using namespace std;
+
+//Estructuras
+
+//Actividad y tarea
+
+/*Tener una estructura que contenga posicion X y Y y vida
+Imprimir las siguientes opciones: 
+
+1- Mover a la derecha
+2- Mover hacia abajo
+3- Mover a  la izquierda
+4-Mover hacia arriba
+
+Jugador empieza en posicion X=10, Y=10
+despues de cada accion imprimir en que posicion se encuentra el jugador
+
+ejemplo: 
+
+Jugador: X= 11 , Y=10 , vida=5
+cada movimiento hacer un random para verificar si sube o baja la vida.
+
+30% recibir uno de damage.  Nota: Empezamos con 5 de vida
+10% Recuperas 1 de vida
+
+nota: No se pueden mover en valores negativos(si puede moverse en 0)
+
+
+TODO ESTO DENTRO DE UN WHILE QUE PREGUNTE SI QUIERE SEGUIR JUGANDO
+SI INGRESA SI, LA EJECUCION NO ACABA... SI PONE NO SE ACABA EL PROGRAMA.
+
+bool seguir = true;
+
+*/
+
+
+
+
+struct POS
+{
+	int x;
+	int y;
+};
+
+struct Personaje
+{
+	POS position;
+	int vida;
+	int damage;
+	int extraLife;
+};
+
+//LOGICA PARA HACER EL DAMAGE, VIDA Y NO HACER NADA
+void randoms() {
+
+ /*Ingresar un 100% y partir ese numero en 3 partes.
+ 
+ 0 - 30 --- 1 punto de dano
+ 30 - 40 --- 1 punto de vida
+ 40 - 100 --- Msj de te has salvado, no ha pasado nada
+
+ */
+
+	int randomDamage = rand()%30; //Numero de 0 al 30 hacer dano
+	int randomlife = rand() % (42 - 31);
+	int nathing = rand() % (101 - 32);
+
+}
+
+
+void ImprimirValores(Personaje _personaje) {
+
+	cout << "PERSONAJE"<<endl;
+	cout << "Vida: " << _personaje.vida << endl;
+	cout << "POS X: " << _personaje.position.x << endl;
+	cout << "POS Y: " << _personaje.position.y << endl;
+	cout << endl << endl;
+}
+
+void dano() {
+     
+	cout << endl;
+	cout << "SITEMA DE VIDA" << endl;
+	cout << "1 ---- 30 =  1 punto menos de vida " << endl;
+	cout << "30 --- 40=  1 punto mas de vida " << endl;
+	cout << "40 -- 100= No sucede nada \n MUCHA SUERTE!" << endl;
+
+}
+
+int main() {
+
+	srand(time(NULL)); //Ingresamos para que los numeros sean random
+	//Definimos los valores 
+	Personaje jugador;
+
+	jugador.vida = 5;
+	jugador.position.x = 10;
+	jugador.position.y = 10;
+	cout << "ACTIVIDAD \nCarlos Ismael Gres H.\n"<<endl;
+
+	ImprimirValores(jugador);
+
+//Definir para donde se mueve el personaje si izquierda o derecha
+	int x,x2, y,y2;
+	
+	//Inicio
+	cout << "OPCIONES: " << endl;
+	cout << "1.-Arriba\n2.-Abajo\n3.-Izquierda\n4.-Derecha" << endl;
+
+	int movimiento;
+	cout << "\nDonde te quieres mover? ";
+	cin >> movimiento;
+	
+	//Switch de movimiento
+	switch (movimiento) {
+
+		//VALOR Y POSITIVO
+	case 1: {
+	
+		cout << "Cuantos valores te quieres mover hacia arriba? "; cin >> y;
+		if (y >= 1) {
+	     	//	cout << "Te moviste hacia arriba" << endl;
+			cout << endl;
+			cout << "Te moviste: " << y << " valores hacia arriba" << endl;
+			int positionYPositivo = (jugador.position.y + y);
+			cout << "Tu posicion actual es Y+: " << positionYPositivo << endl;
+           //-------------------------------------------------------------------------------
+
+			int randomDamage = rand() % (101 - 1);
+		   
+			//Numero random damage imprimir
+			cout << "El numero random movimiento es de: " << randomDamage << endl;
+			cout << endl;
+			dano();
+			cout << endl;
+			if (randomDamage > 0 && randomDamage <= 30) { jugador.vida--; cout <<"\nOh no, has perdido vida \nTu vida actual es: " << jugador.vida<<endl; }
+			if (randomDamage >= 30 && randomDamage <= 40) { jugador.vida++; cout <<"\nEstas con suerte! tienes una vida extra " << "\nTu vida actual es: " << jugador.vida<<endl; }
+			if (randomDamage >= 41 && randomDamage <= 100) {  cout << "No sucede nada \nTu vida actual es: " << jugador.vida<<endl; }
+			
+			cout << "Tu posicion final fue  X: " << jugador.position.x <<" mientras de Y fue: " << positionYPositivo << endl;
+
+		}
+		if (y < 0) {
+			cout << endl;
+			cout << "Has ingresado un numero invalido, elige la opcion ABAJO para moverse a esa direccion " << endl;
+		}
+		if (y == 0) { cout << "No te has movido \n"; }
+	//-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+	
+		break;
+	}
+
+		  //VALOR Y NEGATIVO
+	case 2: {
+
+		cout << "Cuantos valores te quieres mover hacia abajo? "; cin >> y2;
+		if (y2 <= 0 || y2==0) {
+		//	cout << "Te moviste hacia abajo" << endl;
+			cout << endl;
+			cout << "Te moviste: " << -y2 << " valores hacia abajo" << endl;
+			int positionYNegativo = (jugador.position.y + y2);
+
+			if (positionYNegativo >= 0) { cout << "Tu posicion actual es X-: " << positionYNegativo << endl; }
+			if (positionYNegativo == 0) { cout << "CUIDADO... Has llegado al limite" << endl; }
+			if (positionYNegativo < 0) { cout << "Oh no, no has podido realizar esta accion, solo puedes llegar hasta X-: 0" << endl; }
+
+//AQUII
+
+			int randomDamage = rand() % (101 - 1);
+
+			//Numero random damage imprimir
+			cout << "El numero random movimiento es de: " << randomDamage << endl;
+			cout << endl;
+			dano();
+			cout << endl;
+			if (randomDamage > 0 && randomDamage <= 30) { jugador.vida--; cout << "\nOh no, has perdido vida " << "\nTu vida actual es: " << jugador.vida << endl; }
+			if (randomDamage >= 30 && randomDamage <= 40) { jugador.vida++; cout << "\nEstas con suerte! tienes una vida extra " << "\nTu vida actual es: " << jugador.vida << endl; }
+			if (randomDamage >= 41 && randomDamage <= 100) { cout << "No sucede nada \nTu vida actual es: " << jugador.vida << endl; }
+
+			cout << "Tu posicion final fue  X: " << jugador.position.x << " mientras de Y fue: " << positionYNegativo << endl;
+
+		}
+		if (y2 >= 1) {
+			cout << endl;
+			cout << "Has ingresado un numero invalido, elige la opcion ARRIBA para moverse a esa direccion " << endl;
+		}
+
+		if (y2 == 0) { cout << "No te has movido \n"; }
+	
+	
+	
+		break;
+	}
+
+
+//VALOR X NEGATIVO
+	case 3: {
+		cout << "Cuantos valores te quieres mover hacia la izquierda? "; cin >> x;
+		if (x <= 0 || x==0) {
+		//	cout << "Te moviste hacia la izquierda" << endl;
+			cout << endl;
+			cout << "Te moviste: " << x << " valores hacia la izquierda" << endl;
+			int positionXNegativo = (jugador.position.x +  x);
+
+			if( positionXNegativo >= 0){ cout << "Tu posicion actual es X-: " << positionXNegativo << endl; }
+			if (positionXNegativo == 0) { cout << "CUIDADO... Has llegado al limite"<<endl; }
+			if (positionXNegativo < 0) { cout << "Oh no, no has podido realizar esta accion, solo puedes llegar hasta X-: 0" << endl; }
+
+//AQUIII
+
+			int randomDamage = rand() % (101 - 1);
+
+			//Numero random damage imprimir
+			cout << "El numero random movimiento es de: " << randomDamage << endl;
+			cout << endl;
+			dano();
+			cout << endl;
+			if (randomDamage > 0 && randomDamage <= 30) { jugador.vida--; cout << "\nOh no, has perdido vida " << "\nTu vida actual es: " << jugador.vida << endl; }
+			if (randomDamage >= 30 && randomDamage <= 40) { jugador.vida++; cout << "\nEstas con suerte! tienes una vida extra " << "\nTu vida actual es: " << jugador.vida << endl; }
+	    	if (randomDamage >= 41 && randomDamage <= 100) { cout << "No sucede nada \nTu vida actual es: " << jugador.vida << endl; }
+
+			cout << "Tu posicion final fue  X: " << positionXNegativo << " mientras de Y fue: " << jugador.position.y << endl;
+
+		}
+		if (x >= 1) {
+			cout << endl;
+			cout << "Has ingresado un numero invalido, elige la opcion DERECHA para moverse a esa direccion " << endl;
+		}
+
+		if (x == 0) { cout << "No te has movido \n"; }
+	
+
+
+		//---------------------------------------------------------------------------------
+		break;
+	} 
+
+//VALOR X POSITIVO
+	case 4: {
+		
+		cout << "Cuantos valores te quieres mover hacia la derecha? "; cin >> x2;
+		if (x2 >= 1) {
+		//	cout << "Te moviste hacia la derecha" << endl;
+			cout << endl;
+			cout << "Te moviste: " << x2 << " valores hacia la derecha" << endl;
+			int positionXPositivo = (jugador.position.x + x2);
+			cout << "Tu posicion actual es X+: " << positionXPositivo << endl;
+
+
+			int randomDamage = rand() % (101 - 1);
+
+			//Numero random damage imprimir
+			cout << "El numero random movimiento es de: " << randomDamage << endl;
+			cout << endl;
+			dano();
+			cout << endl;
+			if (randomDamage > 0 && randomDamage <= 30) { jugador.vida--; cout <<"\nOh no, has perdido vida "<< "\nTu vida actual es: " << jugador.vida << endl; }
+			if (randomDamage >= 30 && randomDamage <= 40) { jugador.vida++; cout <<"\nEstas con suerte! tienes una vida extra "<< "\nTu vida actual es: " << jugador.vida << endl; }
+			if (randomDamage >= 41 && randomDamage <= 100) { cout << "No sucede nada \nTu vida actual es: " << jugador.vida << endl; }
+
+			cout << "Tu posicion final fue  X: " << positionXPositivo << "Y de Y fue: " << jugador.position.y << endl;
+
+		}
+      if(x2 < 0){
+		  cout << endl;
+		  cout << "Has ingresado un numero invalido, elige la opcion IZQUIERDA para moverse a esa direccion " << endl;
+	  }
+	  if (x2 == 0) { cout << "No te has movido \n"; }
+
+		break;
+	}
+	
+	  default: cout << "Ocupas seleccionar una opcion valida\n\n";
+	}//FINAL DEL SWITCH
+
+
+
+	cout << "\n\n[ GRACIAS ]";
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//STRUCT EJEMPLO PROFE
+
+//struct POS
+//{
+//	int x;
+//	int y;
+//
+//}; //Los struct siempre llevan ; al final de la llave
+//
+//struct Personaje
+//{
+//
+//	int vida;
+//	int mana;
+//	int fuerza;
+//  POS posicion;
+//
+//};
+//
+//struct Jefe
+//{
+//
+//	POS posicion;
+//	int resitencia;
+//	float magia;
+//
+//};
+//
+//void ImprimirValores   (Personaje _personaje) {
+//
+//	cout << "Mana: " << _personaje.mana << endl;
+//	cout << "Vida: " << _personaje.vida << endl;
+//	cout << "Fuerza: " << _personaje.fuerza << endl;
+//	cout << "POS X: " << _personaje.posicion.x << endl;
+//	cout << "POS Y: " << _personaje.posicion.y << endl;
+//
+//}
+//
+//int main() {
+//
+//	Personaje jugador;
+//	jugador.vida = 5;
+//	jugador.fuerza = 50;
+//	jugador.mana = 15;
+//	jugador.posicion.x = 10;
+//	jugador.posicion.y = 15;
+//
+//	ImprimirValores(jugador);
+//	
+//	return 0;
+//}
+

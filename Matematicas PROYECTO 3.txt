@@ -1,0 +1,214 @@
+#include <iostream>
+#include<cmath>
+#include<iomanip>
+
+
+using namespace std;
+
+
+int main() {
+
+
+//METODO DE LA SECANTE
+	cout << "Actividad";
+
+	//Crear e imprimir un polinomio que acepte cualquier grado
+
+
+	double n; //Primero ocupamos guardar el grado maximo de nuestro polinomio
+
+	//Decimos las reglas de nuestro programa de los valores de X
+	cout << "Cuando x^1 aparece significa que solo hay una X = ejemplo: 5x " << endl;
+	cout << "Cuando x^0 Significa que no hay X = ejemplo: 5 " << endl;
+	cout << "------------------------------------------------------------" << endl;
+
+	//Pedimos el grado del polinomio
+	cout << "Cual es el grado de la ecuacion: ";
+	cin >> n; //Se almacena el grado maximo del polinomio
+
+	double* arregloDinamyc; //Arreglo dinamico el cual va almacenar valor enteros
+	arregloDinamyc = new double[n + 1];
+
+	//Creacion del polinomio
+	//Numeros de la izquierda, los numeros enteros reales
+	double formula = 0;
+	for (int enteros = 0; enteros <= n; enteros++) {
+		cout << "Introduce el valor principal " << enteros << " : "; //Introducimos los valores principales
+		cin >> arregloDinamyc[enteros]; //Mi arreglo dinamico guarda mis valores entereos
+	}//Acaba mi ciclo
+
+	cout << "\nLa ecuacion es: " << endl;
+	//Funcion para imprimir el polinomio de manera recta 
+	double x1;
+	cout << "Ingrese un numero para x1: "; cin >> x1;
+	for (int i = 0; i <= n; i++) {
+		if (i > 0) { cout << "   +   " << arregloDinamyc[i] << "(x)^" << i; }
+		if (i == 0) { cout << "  " << arregloDinamyc[i]; }
+		if (i < 0) { cout << "   +   " << arregloDinamyc[i]; }
+		//	cout << "   +   " << arregloDinamyc[i] << "(x)^" << i
+	}//Termina el ciclo FOR de impresion 
+
+	//--------------------------------------------------------------------------------------
+
+	cout << endl;//Salto de linea
+	cout << "\nEcuacion para x1 = 1 " << endl;
+	for (int i = 0; i <= n; i++) {
+		if (i > 0) { cout << "   +   " << arregloDinamyc[i] << "( " << x1 << " )^" << i; }
+		if (i == 0) { cout << "  " << arregloDinamyc[i]; }
+		if (i < 0) { cout << "   +   " << arregloDinamyc[i]; }
+	}	//Termina el ciclo FOR de impresion 
+//-----------------------------------------------------------------------------------------
+	cout << endl;//Salto de linea
+	cout << "\nEcuacion para x1" << endl;
+	cout << "Ecuacion Final: " << " ";
+	//CALCULA LA ECUACION FINAL
+	for (int i = 0; i <= n; i++) {
+
+		int a = (arregloDinamyc[i] * x1); //Multiplica mi valor principal por mi x
+		if (i > 0) {
+			cout << " + " << pow(a, i) << " "; //El resultado lo sube a la potencia asignada
+		}
+
+		if (i == 0) { cout << "" << arregloDinamyc[i]; }
+		if (i < 0) { cout << "" << arregloDinamyc[i]; }
+	}	//Termina el ciclo FOR de impresion 
+
+	//SUMA DEL FOR
+	double suma = 0;
+	int i = 0;
+
+	for (i = 1; i <= n; ++i) {
+		if (i >= 0) {
+			int a = (arregloDinamyc[i] * x1); //Multiplica mi valor principal por mi x
+			int pou = pow(a, i);
+			suma += pou;
+
+
+			//Imprime los valores
+
+		}
+	}	//Termina el ciclo FOR de impresion 
+
+
+	//---------------------------------------------------------------------------
+	double totalbackupx1=0;
+	for (int i = 0; i <= 1; i++) {
+
+		int a = (arregloDinamyc[i] * x1); //Multiplica mi valor principal por mi x
+		if (i > 0) {
+			double total = suma + arregloDinamyc[0];
+		
+			cout << "\nTOTAL: " << total << " ";
+			totalbackupx1 = total;
+		} //El resultado lo sube a la potencia asignada
+
+	}//Final del for
+
+	cout <<"\n\nHEHEHEHEHEHEX1 : "<< totalbackupx1;
+
+
+	//PARTE 1 ACABADA F(X)= X1 = 1---- LISTO OK!
+	//------------------------------------------------------------------------------------------
+
+	//PARTE 2 F(X) = X0 = 0
+
+
+
+
+	cout << "\n\n\nLa ecuacion es: " << endl;
+	//Funcion para imprimir el polinomio de manera recta 
+	double x0;
+	cout << "Ingrese un numero para x0: "; cin >> x0;
+	for (int i = 0; i <= n; i++) {
+		if (i > 0) { cout << "   +   " << arregloDinamyc[i] << "(x)^" << i; }
+		if (i == 0) { cout << "  " << arregloDinamyc[i]; }
+		if (i < 0) { cout << "   +   " << arregloDinamyc[i]; }
+		//	cout << "   +   " << arregloDinamyc[i] << "(x)^" << i
+	}//Termina el ciclo FOR de impresion 
+
+	//--------------------------------------------------------------------------------------
+
+	cout << endl;//Salto de linea
+	cout << "\nEcuacion para x0 = 0 " << endl;
+	for (int i = 0; i <= n; i++) {
+		if (i > 0) { cout << "   +   " << arregloDinamyc[i] << "( " << x0 << " )^" << i; }
+		if (i == 0) { cout << "  " << arregloDinamyc[i]; }
+		if (i < 0) { cout << "   +   " << arregloDinamyc[i]; }
+	}	//Termina el ciclo FOR de impresion 
+//-----------------------------------------------------------------------------------------
+	cout << endl;//Salto de linea
+	cout << "\nEcuacion para x0 " << endl;
+	cout << "Ecuacion Final: " << " ";
+	//CALCULA LA ECUACION FINAL
+	for (int i = 0; i <= n; i++) {
+
+		int b = (arregloDinamyc[i] * x0); //Multiplica mi valor principal por mi x
+		if (i > 0) {
+			cout << " + " << pow(b, i) << " "; //El resultado lo sube a la potencia asignada
+		}
+
+		if (i == 0) { cout << "" << arregloDinamyc[i]; }
+		if (i < 0) { cout << "" << arregloDinamyc[i]; }
+	}	//Termina el ciclo FOR de impresion 
+
+	//SUMA DEL FOR
+	double suma1 = 0;
+	int ii = 0;
+
+	for (ii = 1; ii <= n; ++ii) {
+		if (ii >= 0) {
+			int a = (arregloDinamyc[ii] * x0); //Multiplica mi valor principal por mi x
+			int pou = pow(a, ii);
+			suma1 += pou;
+
+
+			//Imprime los valores
+			//cout << "\n\n> "<<suma<< " "; //El resultado lo sube a la potencia asignada
+		}
+	}	//Termina el ciclo FOR de impresion 
+
+	//---------------------------------------------------------------------------
+	double totalbackupx0 = 0;
+	for (int i = 0; i <= 1; i++) {
+
+		int b = (arregloDinamyc[i] * x0); //Multiplica mi valor principal por mi x
+		if (i > 0) {
+			int total1 = suma1 + arregloDinamyc[0];
+			cout << "\nTOTAL: " << total1 << " ";
+			totalbackupx0 = total1;
+
+		} //El resultado lo sube a la potencia asignada
+	}//Final del for
+
+	cout << "\n\nHEHEHEHEHEHE X0: " << totalbackupx0;
+
+//VALOR ABSOLUTO
+
+	//double diferencia = x1 - x0;
+	//double valorAbsoluto = abs(diferencia);
+	//cout << "\n\nEl error aproximado va ser igual a: " << valorAbsoluto << " de la diferencia de x1 y x0 "<<endl;
+
+	//Observacion o tolerancia
+	double tolerancia,x2;
+	int iteraciones,z=1;
+	cout << "\n\nIngrese la tolerancia que se va aplicara  la funcion: "; cin >> tolerancia;
+	cout << "\nIngrese el numero max de interaciones para la funcion: "; cin >> iteraciones;
+
+
+
+
+	while (abs(x1 - x0 ) > tolerancia *(abs(x1)+1) && z <= iteraciones ) {
+
+//Imprimir la respuesta final de la ecuacion, Interaccion 
+		
+		x2 = x1 - (totalbackupx1 * (x0 - x1)) / (totalbackupx0 - totalbackupx1);
+		x0 = x1;
+		x1 = x2;
+		cout << "\n" << z << " : " << setprecision(6) << x2 << endl;
+		z++;
+		
+	}
+
+
+	return 0;
+}

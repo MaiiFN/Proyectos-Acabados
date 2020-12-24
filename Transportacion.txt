@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std; 
+/*Estas haciendo un programa para un servicio de autobus.
+Un autobus  puede transportar a 50 personas a la vez... 
+Dado el numero de pasajeros que esperan en la estacion de autobuses como entrada, 
+hay que calcular y generar cuantos asientos vacions tendra el ultimo autobus
+
+Ejemplo de entrada: 126
+Ejemplo de salida: 24
+
+En la estacion hay 126 personas, el primer autobus recoge 50 maximo, si hacemos el calculo
+de pasajeros usando el modulo para el autobus, nos da 26, 26 personas se bajan, y esperan al 
+siguiente autobus, el cual hacemos la resta de 26 - autobus... y tenemos el resultado
+*/
+
+int main() {
+
+	int passengers;
+	int autobus = 50;
+
+	cin >> passengers;
+
+	int passengersFinal = (passengers % autobus);
+	cout << autobus - passengersFinal;
+	
+}
