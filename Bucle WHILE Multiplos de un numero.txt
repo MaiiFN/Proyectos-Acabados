@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+//Imprime multiplos de 3, del 1 al 20 como rango maximo
+//usando un bucle WHILE
+
+int main() {
+
+	int num = 0;
+	while (num < 20) {
+		num++;
+		if (num % 3 == 0) { cout << num<<endl; }
+
+	}//Final del while
+	return 0;
+}
+
+
+
